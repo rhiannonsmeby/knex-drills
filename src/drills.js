@@ -1,3 +1,5 @@
+
+//DATABASES WITH NODE PRACTICE
 require('dotenv').config()
 const knex = require('knex')
 
@@ -11,32 +13,32 @@ console.log('knex and driver installed correctly');
 knexInstance('shopping_list')
     .select('*');
 
-// function getAllItemsWithText(searchTerm) {
-//     knexInstance
-//         .select('name', 'price', 'category')
-//         .from('shopping_list')
-//         .where('name', 'ILIKE', `%${searchTerm}%`)
-//         .then(result => {
-//             console.log(result)
-//         })
-// }
+function getAllItemsWithText(searchTerm) {
+    knexInstance
+        .select('name', 'price', 'category')
+        .from('shopping_list')
+        .where('name', 'ILIKE', `%${searchTerm}%`)
+        .then(result => {
+            console.log(result)
+        })
+}
 
-// getAllItemsWithText('b')
+getAllItemsWithText('b')
 
-// function paginateItems(pageNumber) {
-//     const productsPerPage = 6
-//     const offset = productsPerPage * (pageNumber - 1)
-//     knexInstance
-//         .select('name')
-//         .from('shopping_list')
-//         .limit(productsPerPage)
-//         .offset(offset)
-//         .then(result => {
-//             console.log(result)
-//         })
-// }
+function paginateItems(pageNumber) {
+    const productsPerPage = 6
+    const offset = productsPerPage * (pageNumber - 1)
+    knexInstance
+        .select('name')
+        .from('shopping_list')
+        .limit(productsPerPage)
+        .offset(offset)
+        .then(result => {
+            console.log(result)
+        })
+}
 
-// paginateItems(2)
+paginateItems(2)
 
 function itemsAddedAfter(daysAgo) {
     knexInstance
